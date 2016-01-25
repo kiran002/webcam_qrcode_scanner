@@ -41,19 +41,19 @@ public class launcher {
 			String filePath = "f:\\hello-world.png";
 			String charset = "UTF-8"; // or "ISO-8859-1"
 			Map hintMap = new HashMap();
-			
-			
+
 			BufferedImage image = webcam.getImage();
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			ImageIO.write(image,"PNG", os);
+			ImageIO.write(image, "PNG", os);
 			InputStream is = new ByteArrayInputStream(os.toByteArray());
-			
+
 			BinaryBitmap binaryBitmap = new BinaryBitmap(
 					new HybridBinarizer(new BufferedImageLuminanceSource(ImageIO.read(is))));
-			// Result result = new MultiFormatReader().decode(binaryBitmap,
-			// hints)
-			
-			//ImageIO.write(image, "PNG", new File("f:\\hello-world.png"));
+					// Result result = new
+					// MultiFormatReader().decode(binaryBitmap,
+					// hints)
+
+			// ImageIO.write(image, "PNG", new File("f:\\hello-world.png"));
 
 			BitMatrix bm = binaryBitmap.getBlackMatrix();
 
@@ -71,13 +71,14 @@ public class launcher {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Unable to read Qr code: Please dont shake your mobile!");
+			// e.printStackTrace();
 		} catch (NotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Unable to read Qr code: Please dont shake your mobile!");
 		} catch (FormatException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Unable to read Qr code: Please dont shake your mobile!");
 		}
 	}
 
